@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import safcomLogo from "../assets/safcom.png";
 import mpesaLogo from "../assets/mpesa.png";
 
+const BASE_URL = "http://127.0.0.1:8000"; // Define the base URL of your Flask server
+
 const MpesaPaymentPage = () => {
   const initialFormData = {
     phone: "",
@@ -21,7 +23,7 @@ const MpesaPaymentPage = () => {
     event.preventDefault();
     setLoading(true);
 
-    fetch("http://127.0.0.1:5000/payment", {
+    fetch(`${BASE_URL}/payment`, { // Use the BASE_URL variable to construct the complete URL
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,5 +98,3 @@ const MpesaPaymentPage = () => {
 };
 
 export default MpesaPaymentPage;
-
-
